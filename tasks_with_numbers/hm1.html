@@ -11,123 +11,76 @@ pre { background: #f0f0f0; padding: 10px; white-space: pre-wrap; }
 </style>
 </head>
 <body>
-<h1>Задачи на работу с числами/</h1>
+<h1>Задачи на работу с числами</h1>
 
 <section>
 <h2>1. Взаимная простота</h2>
 <input id="a1" type="number" placeholder="a">
 <input id="b1" type="number" placeholder="b">
-<button onclick="check1()">Проверить</button>
+<button onclick="task1()">Проверить</button>
 <pre id="out1"></pre>
 </section>
 
 <section>
 <h2>2. Простое число</h2>
 <input id="n2" type="number" placeholder="число">
-<button onclick="check2()">Проверить</button>
+<button onclick="task2()">Проверить</button>
 <pre id="out2"></pre>
 </section>
 
 <section>
-<h2>3. Решето Эратосфена</h2>
-<input id="N3" type="number" placeholder="до n">
-<button onclick="check3()">Выполнить</button>
+<h2>3. Первые N простых чисел</h2>
+<input id="N3" type="number" placeholder="n">
+<button onclick="task3()">Выполнить</button>
 <pre id="out3"></pre>
 </section>
 
 <section>
-<h2>4. Первые N простых чисел</h2>
-<input id="N4" type="number" placeholder="n">
-<button onclick="check4()">Выполнить</button>
+<h2>4. Делители числа</h2>
+<input id="N4" type="number" placeholder="число">
+<button onclick="task4()">Выполнить</button>
 <pre id="out4"></pre>
 </section>
 
 <section>
-<h2>5. Делители числа</h2>
+<h2>5. Простые множители</h2>
 <input id="N5" type="number" placeholder="число">
-<button onclick="check5()">Выполнить</button>
+<button onclick="task5()">Выполнить</button>
 <pre id="out5"></pre>
 </section>
 
 <section>
-<h2>6. Простые множители</h2>
-<input id="N6" type="number" placeholder="число">
-<button onclick="check6()">Выполнить</button>
+<h2>6. Число Фибоначчи</h2>
+<input id="N6" placeholder="число">
+<button onclick="task6()">Проверить</button>
 <pre id="out6"></pre>
 </section>
 
 <section>
-<h2>7. Первые N совершенных чисел</h2>
-<input id="N7" type="number" placeholder="n, n<5">
-<button onclick="check7()">Выполнить</button>
+<h2>7. Двойной факториал</h2>
+<input id="N7" placeholder="n">
+<button onclick="task7()">Вычислить</button>
 <pre id="out7"></pre>
 </section>
 
 <section>
-<h2>8. Нечетные числа как сумма 3 простых</h2>
+<h2>8. Делится на каждую цифру</h2>
 <input id="N8" placeholder="n">
 <input id="M8" placeholder="m">
-<button onclick="check8()">Выполнить</button>
+<button onclick="task8()">Найти</button>
 <pre id="out8"></pre>
 </section>
 
 <section>
-<h2>9. Число Фибоначчи</h2>
-<input id="N9" placeholder="число">
-<button onclick="check9()">Проверить</button>
+<h2>9. Делится на сумму цифр</h2>
+<input id="N9" placeholder="n">
+<input id="M9" placeholder="m">
+<button onclick="task9()">Найти</button>
 <pre id="out9"></pre>
 </section>
 
-<section>
-<h2>10. Двойной факториал</h2>
-<input id="N10" placeholder="n">
-<button onclick="check10()">Вычислить</button>
-<pre id="out10"></pre>
-</section>
-
-<section>
-<h2>11. Пифагоровы тройки</h2>
-<input id="N11" placeholder="n">
-<input id="M11" placeholder="m">
-<button onclick="check11()">Найти</button>
-<pre id="out11"></pre>
-</section>
-
-<section>
-<h2>12. Умножение / деление дробей</h2>
-<input id="a12" placeholder="a/b">
-<input id="b12" placeholder="c/d">
-<select id="op12"><option value="*">*</option><option value="/">%</option></select>
-<button onclick="check12()">Вычислить</button>
-<pre id="out12"></pre>
-</section>
-
-<section>
-<h2>13. Сложение / вычитание дробей</h2>
-<input id="a13" placeholder="a/b">
-<input id="b13" placeholder="c/d">
-<select id="op13"><option value="+">+</option><option value="-">-</option></select>
-<button onclick="check13()">Вычислить</button>
-<pre id="out13"></pre>
-</section>
-
-<section>
-<h2>14. Делится на каждую цифру</h2>
-<input id="N14" placeholder="n">
-<input id="M14" placeholder="m">
-<button onclick="check14()">Найти</button>
-<pre id="out14"></pre>
-</section>
-
-<section>
-<h2>15. Делится на сумму цифр</h2>
-<input id="N15" placeholder="n">
-<input id="M15" placeholder="m">
-<button onclick="check15()">Найти</button>
-<pre id="out15"></pre>
-</section>
-
 <script>
+// пригодится
 function gcd(a, b) {
     while (b) {
         let temp = b;
@@ -145,64 +98,39 @@ function isPrime(n) {
     return true;
 }
 
-function sieve(N) {
-    let arr = Array(N + 1).fill(true);
-    arr[0] = arr[1] = false;
-    for (let i = 2; i * i <= N; i++) {
-        if (arr[i]) {
-            for (let j = i * i; j <= N; j += i) {
-                arr[j] = false;
-            }
-        }
-    }
-    return arr
-        .map((v, i) => (v ? i : null))
-        .filter(x => x !== null);
-}
-
-function simplifyFrac(n, d) {
-    let g = gcd(n, d);
-    return [n / g, d / g];
-}
- 
-
-function check1() {
+// функц задач
+function task1() {
     let a = +document.getElementById('a1').value;
     let b = +document.getElementById('b1').value;
     document.getElementById('out1').textContent = gcd(a, b) === 1 ? "Взаимно просты" : "Не взаимно просты";
 }
 
-function check2() {
+function task2() {
     let n = +document.getElementById('n2').value;
     document.getElementById('out2').textContent = isPrime(n) ? "Простое" : "Не простое";
 }
 
-function check3() {
+function task3() {
     let N = +document.getElementById('N3').value;
-    document.getElementById('out3').textContent = sieve(N).join(', ');
-}
-
-function check4() {
-    let N = +document.getElementById('N4').value;
     let primes = [], n = 2;
     while (primes.length < N) {
         if (isPrime(n)) primes.push(n);
         n++;
     }
-    document.getElementById('out4').textContent = primes.join(', ');
+    document.getElementById('out3').textContent = primes.join(', ');
 }
 
-function check5() {
-    let N = +document.getElementById('N5').value;
+function task4() {
+    let N = +document.getElementById('N4').value;
     let div = [];
     for (let i = 1; i <= N; i++) {
         if (N % i === 0) div.push(i);
     }
-    document.getElementById('out5').textContent = div.join(', ');
+    document.getElementById('out4').textContent = div.join(', ');
 }
 
-function check6() {
-    let N = +document.getElementById('N6').value;
+function task5() {
+    let N = +document.getElementById('N5').value;
     let n = N, f = {};
     for (let i = 2; i * i <= n; i++) {
         while (n % i === 0) {
@@ -211,100 +139,33 @@ function check6() {
         }
     }
     if (n > 1) f[n] = (f[n] || 0) + 1;
-    document.getElementById('out6').textContent = JSON.stringify(f);
+    document.getElementById('out5').textContent = JSON.stringify(f);
 }
 
-function check7() {
-    let N = +document.getElementById('N7').value;
-    let res = [], num = 2;
-    while (res.length < N) {
-        let sum = 1;
-        for (let i = 2; i * i <= num; i++) {
-            if (num % i === 0) {
-                sum += i;
-                if (i !== num / i) sum += num / i;
-            }
-        }
-        if (sum === num) res.push(num);
-        num++;
-    }
-    document.getElementById('out7').textContent = res.join(', ');
-}
-
-function check8() {
-    let N = +document.getElementById('N8').value;
-    let M = +document.getElementById('M8').value;
-    let primes = sieve(M), res = [];
-    for (let n = N; n <= M; n += 2) {
-        for (let i = 0; i < primes.length; i++) {
-            for (let j = i; j < primes.length; j++) {
-                let k = n - primes[i] - primes[j];
-                if (primes.includes(k) && k >= primes[j]) {
-                    res.push([n, primes[i], primes[j], k]);
-                    break;
-                }
-            }
-        }
-    }
-    document.getElementById('out8').textContent = JSON.stringify(res);
-}
-
-function check9() {
-    let N = +document.getElementById('N9').value;
+function task6() {
+    let N = +document.getElementById('N6').value;
     let a = 0, b = 1, found = false;
     while (b <= N) {
         if (b === N) { found = true; break; }
         [a, b] = [b, a + b];
     }
-    document.getElementById('out9').textContent = found ? "Число Фибоначчи" : "Не Фибоначчи";
+    document.getElementById('out6').textContent = found ? "Число Фибоначчи" : "Не Фибоначчи";
 }
 
-function check10() {
-    let N = +document.getElementById('N10').value;
+function task7() {
+    let N = +document.getElementById('N7').value;
     let res = 1;
     if (N % 2 === 0) {
         for (let i = 2; i <= 2 * N; i += 2) res *= i;
     } else {
         for (let i = 1; i <= 2 * N + 1; i += 2) res *= i;
     }
-    document.getElementById('out10').textContent = res;
+    document.getElementById('out7').textContent = res;
 }
 
-function check11() {
-    let N = +document.getElementById('N11').value;
-    let M = +document.getElementById('M11').value;
-    let res = [];
-    for (let a = N; a <= M; a++) {
-        for (let b = a; b <= M; b++) {
-            let c = Math.sqrt(a * a + b * b);
-            if (Number.isInteger(c) && c >= b && c <= M) res.push([a, b, c]);
-        }
-    }
-    document.getElementById('out11').textContent = JSON.stringify(res);
-}
-function check12(){
-    let [n1,d1]=document.getElementById('a12').value.split('/').map(Number);
-    let [n2,d2]=document.getElementById('b12').value.split('/').map(Number);
-    let op=document.getElementById('op12').value;
-    let num,den;
-    if(op==='*'){num=n1*n2; den=d1*d2;}
-    else{num=n1*d2; den=d1*n2;}
-    [num,den]=simplifyFrac(num,den);
-    document.getElementById('out12').textContent = num===0 ? "0" : num+"/"+den;
-}
-
-function check13(){
-    let [n1,d1]=document.getElementById('a13').value.split('/').map(Number);
-    let [n2,d2]=document.getElementById('b13').value.split('/').map(Number);
-    let op=document.getElementById('op13').value;
-    let den=d1*d2;
-    let num = op==='+' ? n1*d2+n2*d1 : n1*d2-n2*d1;
-    [num,den]=simplifyFrac(num,den);
-    document.getElementById('out13').textContent = num===0 ? "0" : num+"/"+den;
-}
-function check14() {
-    let N = +document.getElementById('N14').value;
-    let M = +document.getElementById('M14').value;
+function task8() {
+    let N = +document.getElementById('N8').value;
+    let M = +document.getElementById('M8').value;
     let res = [];
     for (let i = N; i <= M; i++) {
         let ok = true;
@@ -316,19 +177,19 @@ function check14() {
         }
         if (ok) res.push(i);
     }
-    document.getElementById('out14').textContent = res.join(', ');
+    document.getElementById('out8').textContent = res.join(', ');
 }
 
-function check15() {
-    let N = +document.getElementById('N15').value;
-    let M = +document.getElementById('M15').value;
+function task9() {
+    let N = +document.getElementById('N9').value;
+    let M = +document.getElementById('M9').value;
     let res = [];
     for (let i = N; i <= M; i++) {
         let sum = 0;
         for (let c of i.toString()) sum += +c;
         if (i % sum === 0) res.push(i);
     }
-    document.getElementById('out15').textContent = res.join(', ');
+    document.getElementById('out9').textContent = res.join(', ');
 }
 </script>
 
