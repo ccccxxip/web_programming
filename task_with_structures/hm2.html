@@ -1,0 +1,313 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа со структурами данных</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .task {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #fc6aae;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #fca8d6;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Работа со структурами данных</h1>
+
+    <!-- Задача 1 -->
+    <div class="task">
+        <h2>2.1. Преобразование kebab-case в camelCase</h2>
+        <input type="text" id="kebabInput" value="background-color" placeholder="Введите kebab-case строку">
+        <button onclick="convertKebabToCamel()">Преобразовать</button>
+        <p>Результат: <span id="camelResult"></span></p>
+    </div>
+
+    <!-- Задача 2 -->
+    <div class="task">
+        <h2>2.2. Работа с массивами</h2>
+        <button onclick="showArrays()">Показать массивы</button>
+        <div id="arraysResult"></div>
+    </div>
+
+    <!-- Задача 3 -->
+    <div class="task">
+        <h2>2.3. Переводчик</h2>
+        <input type="text" id="translateInput" placeholder="Введите слово для перевода" value="hello">
+        <select id="languageSelect">
+            <option value="ru">Русский</option>
+            <option value="es">Испанский</option>
+            <option value="fr">Французский</option>
+        </select>
+        <button onclick="translateWord()">Перевести</button>
+        <p>Результат: <span id="translateResult"></span></p>
+        <p>Доступные слова: hello, goodbye, thank you, please</p>
+    </div>
+
+    <!-- Задача 4 -->
+    <div class="task">
+        <h2>2.4. Дни недели</h2>
+        <button onclick="showCurrentDay()">Показать текущий день</button>
+        <p id="currentDayResult"></p>
+    </div>
+
+    <!-- Задача 5 -->
+    <div class="task">
+        <h2>2.5. Персонал</h2>
+        <button onclick="showPersonnel()">Показать персонал</button>
+        <div id="personnelResult"></div>
+    </div>
+
+    <!-- Задача 6 -->
+    <div class="task">
+        <h2>2.6. Предметы</h2>
+        <input type="text" id="subjectInput" placeholder="Введите название предмета">
+        <button onclick="addSubject()">Добавить предмет</button>
+        <button onclick="removeSubject()">Удалить предмет</button>
+        <button onclick="showSubjects()">Показать предметы</button>
+        <div id="subjectsResult"></div>
+    </div>
+
+    <script>
+        // 2 Преобразование kebab-case в camelCase с использованием at, split и toUpperCase
+        function kebabToCamel(str) {
+            const words = str.split('-');
+            let result = words[0];
+            
+            for (let i = 1; i < words.length; i++) {
+                // метод at()
+                const firstChar = words[i].at(0);
+                // метод toUpperCase()
+                const restOfWord = words[i].slice(1);
+                result += firstChar.toUpperCase() + restOfWord;
+            }
+            
+            return result;
+        }
+
+        function convertKebabToCamel() {
+            const input = document.getElementById('kebabInput').value;
+            const result = kebabToCamel(input);
+            document.getElementById('camelResult').textContent = result;
+        }
+
+        // 2 Работа с массивами
+        function showArrays() {
+            const originalArray = [9,8,7,6,5,4,3,2,1];
+            
+            // метод slice()
+            const copy1 = originalArray.slice();
+            // метод reverse()
+            copy1.reverse();
+            
+            // spread оператор
+            const copy2 = [...originalArray];
+            // создание нового массива с обратным порядком
+            const reversedCopy2 = [];
+            for (let i = copy2.length - 1; i >= 0; i--) {
+                reversedCopy2.push(copy2[i]);
+            }
+            
+            const result = `
+                Исходный массив: [${originalArray.join(', ')}]<br>
+                Копия 1 (slice + reverse): [${copy1.join(', ')}]<br>
+                Копия 2 (spread + ручной реверс): [${reversedCopy2.join(', ')}]
+            `;
+            
+            document.getElementById('arraysResult').innerHTML = result;
+        }
+
+        // 3 Переводчик
+        function createTranslator() {
+            const dictionary = {
+                "hello": {
+                    "ru": "привет",
+                    "es": "hola",
+                    "fr": "bonjour"
+                },
+                "goodbye": {
+                    "ru": "до свидания",
+                    "es": "adiós",
+                    "fr": "au revoir"
+                },
+                "thank you": {
+                    "ru": "спасибо",
+                    "es": "gracias",
+                    "fr": "merci"
+                },
+                "please": {
+                    "ru": "пожалуйста",
+                    "es": "por favor",
+                    "fr": "s'il vous plaît"
+                }
+            };
+            
+            return function(text, language) {
+                const lowerText = text.toLowerCase();
+                if (dictionary[lowerText] && dictionary[lowerText][language]) {
+                    return dictionary[lowerText][language];
+                }
+                return text; 
+            };
+        }
+
+        const translate = createTranslator();
+
+        function translateWord() {
+            const text = document.getElementById('translateInput').value;
+            const language = document.getElementById('languageSelect').value;
+            const result = translate(text, language);
+            document.getElementById('translateResult').textContent = result;
+        }
+
+        // 4 дни недели
+        const weekDays = {
+            1: "Понедельник",
+            2: "Вторник", 
+            3: "Среда",
+            4: "Четверг",
+            5: "Пятница",
+            6: "Суббота",
+            7: "Воскресенье",
+            
+            // текущий день неедели
+            getCurrentDay: function() {
+                // 0=воскресенье, 1=понедельник и тд
+                // сделали чтоб 1=понедельник
+                const jsDay = new Date().getDay();
+                const ourDay = jsDay === 0 ? 7 : jsDay;
+                return this[ourDay];
+            }
+        };
+
+        function showCurrentDay() {
+            const currentDay = weekDays.getCurrentDay();
+            document.getElementById('currentDayResult').textContent = `Сегодня: ${currentDay}`;
+        }
+
+        // 5 персонал
+        const personnel = {
+            "директор": "Иван Иванов",
+            "менеджер": "Петр Петров", 
+            "бухгалтер": "Мария Сидорova",
+            "программист": "Алексей Алексеев"
+        };
+
+        function showPersonnel() {
+            const personnel2 = {};
+            for (let key in personnel) {
+                personnel2[key] = personnel[key];
+            }
+
+            personnel2["директор"] = "Сергей Сергеев";
+            personnel2["менеджер"] = "Ольга Ольгова";
+            
+            const personnel1Str = JSON.stringify(personnel, null, 2).replace(/\n/g, '\n');
+            const personnel2Str = JSON.stringify(personnel2, null, 2).replace(/\n/g, '\n');
+            
+            const result = `
+                <strong>Персонал 1:</strong><br>
+                <pre>${personnel1Str}</pre>
+                <br>
+                <strong>Персонал 2:</strong><br>
+                <pre>${personnel2Str}</pre>
+            `;
+            
+            document.getElementById('personnelResult').innerHTML = result;
+        }
+
+        // 6 Предменты
+        const subjects = {
+            list: "математика,физика,химия,история",
+            
+            addSubject: function(subject) {
+                // Преобразуем строку в массив с помощью split
+                const subjectsArray = this.list.split(',');
+                
+                //  есть предмет в массиве?
+                if (!subjectsArray.includes(subject)) {
+                    // push
+                    subjectsArray.push(subject);
+                    this.list = subjectsArray.join(',');
+                    return `Предмет "${subject}" добавлен`;
+                } else {
+                    return `Предмет "${subject}" уже существует`;
+                }
+            },
+            
+            // делитнем
+            removeSubject: function(subject) {
+                // split
+                const subjectsArray = this.list.split(',');
+                const index = subjectsArray.indexOf(subject);
+                
+                if (index !== -1) {
+                    // splice - удаляем 
+                    subjectsArray.splice(index, 1);
+                    this.list = subjectsArray.join(',');
+                    return `Предмет "${subject}" удален`;
+                } else {
+                    return `Предмет "${subject}" не найден`;
+                }
+            },
+            
+            showSubjects: function() {
+                return `Текущие предметы: ${this.list}`;
+            }
+        };
+
+        function addSubject() {
+            const subject = document.getElementById('subjectInput').value.trim();
+            if (subject) {
+                const result = subjects.addSubject(subject);
+                document.getElementById('subjectsResult').innerHTML = result + '<br>' + subjects.showSubjects();
+            }
+        }
+
+        function removeSubject() {
+            const subject = document.getElementById('subjectInput').value.trim();
+            if (subject) {
+                const result = subjects.removeSubject(subject);
+                document.getElementById('subjectsResult').innerHTML = result + '<br>' + subjects.showSubjects();
+            }
+        }
+
+        function showSubjects() {
+            document.getElementById('subjectsResult').textContent = subjects.showSubjects();
+        }
+
+        showCurrentDay();
+    </script>
+</body>
+</html>
