@@ -1,0 +1,6 @@
+body { font-family: Arial, sans-serif; background:#f7f7f7; text-align:center; padding:20px }
+h2 { margin-bottom:10px }
+#mulTable { border-collapse: collapse; margin: 0 auto; background:#ecc2dc }
+#mulTable th, #mulTable td { border:1px solid #b37e9d; padding:8px 12px }
+#mulTable th { background:#e7a2ca }
+#mulTable td { width:60px; text-align:center }
