@@ -49,7 +49,7 @@ const styles = {
   function showError(input, message) {
     input.classList.add("error");
     const error = document.createElement("div");
-    error.className = "error-message";
+    error.className = "error-message"; 
     error.textContent = message;
     input.insertAdjacentElement("afterend", error);
   }
