@@ -1,94 +1,120 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Конструктор визиток</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Конструктор визиток</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="wrapper">
-  <div class="constructor">
-    <h2>Конструктор визиток</h2>
-    <form id="form">
-      <div class="form-row">
-        <label>Организация</label>
-        <input type="text" id="org" placeholder='ООО "Ориентир"'>
-      </div>
-      <div class="form-row">
-        <label>ФИО</label>
-        <input type="text" id="fio" placeholder="Фёдоров Иван Семенович">
-      </div>
-      <div class="controls">
-        <div class="align-btns" data-target="fio">
-          <button type="button" class="align" data-align="left">🡐</button>
-          <button type="button" class="align" data-align="center">🡒🡐</button>
-          <button type="button" class="align" data-align="right">🡒</button>
-        </div>
-        <div class="font-btns" data-target="fio">
-          <button type="button" class="font-size" data-size="24px">24px</button>
-          <button type="button" class="font-size" data-size="26px">26px</button>
-          <button type="button" class="font-size" data-size="28px">28px</button>
-        </div>
-        <div class="color-row">
-          <span style="font-size:13px;color:#888;">Цвет ФИО:</span>
-          <input type="color" id="fioColor" value="#19225e">
-        </div>
-      </div>
-      <div class="form-row">
-        <label>Должность</label>
-        <input type="text" id="position" placeholder="Менеджер по развитию"> 
-      </div>
-      <div class="controls">
-        <div class="align-btns" data-target="position">
-          <button type="button" class="align" data-align="left">🡐</button>
-          <button type="button" class="align" data-align="center">🡒🡐</button>
-          <button type="button" class="align" data-align="right">🡒</button>
-        </div>
-        <div class="font-btns" data-target="position">
-          <button type="button" class="font-size" data-size="15px">15px</button>
-          <button type="button" class="font-size" data-size="16px">16px</button>
-          <button type="button" class="font-size" data-size="17px">17px</button>
-        </div>
-        <div class="color-row">
-          <span style="font-size:13px;color:#888;">Цвет должности:</span>
-          <input type="color" id="posColor" value="#555555">
-        </div>
-      </div>
-      <div class="form-row">
-        <label>Телефон</label>
-        <input type="text" id="phone" placeholder="8 (999) 123-45-67">
-      </div>
-      <div class="form-row">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="fedorov.is@orientir.org">
-        <label class="checkbox"><input type="checkbox" id="showEmail" checked>Показать</label>
-      </div>
-      <div class="form-row">
-        <label>Адрес</label>
-        <input type="text" id="address" placeholder="Иркутск, Байкальская, 421, оф. 12">
-        <label class="checkbox"><input type="checkbox" id="showAddress" checked>Показать</label>
-      </div>
-      <div class="form-row">
-        <label>Фон визитки</label>
-        <input type="color" id="bgColor" value="#f8f8fa">
-      </div>
-      <button id="apply" type="button">Применить</button>
-    </form>
-  </div>
-  <div class="preview">
-    <div class="card" id="card">
-      <h3 id="c-org"></h3>
-      <p id="c-fio"></p>
-      <p id="c-position"></p>
-      <p id="c-phone"></p>
-      <p id="c-email"></p>
-      <p id="c-address"></p>
-    </div>
-  </div>
+
+<div class="constructor">
+
+<h2>Конструктор визиток</h2>
+
+<form id="form">
+
+<div class="form-row">
+<label>Организация</label>
+<input type="text" id="org" placeholder='ООО "Ориентир"'>
 </div>
+
+<div class="form-row">
+<label>ФИО</label>
+<input type="text" id="fio" placeholder="Фёдоров Иван Семенович">
+</div>
+
+<div class="controls">
+
+<div class="align-btns" data-target="fio">
+<button type="button" data-align="left">🡐</button>
+<button type="button" data-align="center">🡒🡐</button>
+<button type="button" data-align="right">🡒</button>
+</div>
+
+<div class="font-btns" data-target="fio">
+<button type="button" data-size="24px">24px</button>
+<button type="button" data-size="26px">26px</button>
+<button type="button" data-size="28px">28px</button>
+</div>
+
+<input type="color" id="fioColor" value="#19225e">
+
+</div>
+
+<div class="form-row">
+<label>Должность</label>
+<input type="text" id="position" placeholder="Менеджер по развитию">
+</div>
+
+<div class="controls">
+
+<div class="align-btns" data-target="position">
+<button type="button" data-align="left">🡐</button>
+<button type="button" data-align="center">🡒🡐</button>
+<button type="button" data-align="right">🡒</button>
+</div>
+
+<div class="font-btns" data-target="position">
+<button type="button" data-size="15px">15px</button>
+<button type="button" data-size="16px">16px</button>
+<button type="button" data-size="17px">17px</button>
+</div>
+
+<input type="color" id="posColor" value="#555555">
+
+</div>
+
+<div class="form-row">
+<label>Телефон</label>
+<input type="text" id="phone" placeholder="8 (999) 123-45-67">
+</div>
+
+<div class="form-row">
+<label>Email</label>
+<input type="email" id="email">
+<input type="checkbox" id="showEmail" checked>Показать
+</div>
+
+<div class="form-row">
+<label>Адрес</label>
+<input type="text" id="address">
+<input type="checkbox" id="showAddress" checked>Показать
+</div>
+
+<div class="form-row">
+<label>Фон визитки</label>
+<input type="color" id="bgColor" value="#f8f8fa">
+</div>
+
+<button id="apply" type="button">Применить</button>
+
+</form>
+
+</div>
+
+<div class="preview">
+
+<div class="card" id="card">
+<h3 id="c-org"></h3>
+<p id="c-fio"></p>
+<p id="c-position"></p>
+<p id="c-phone"></p>
+<p id="c-email"></p>
+<p id="c-address"></p>
+</div>
+
+</div>
+
+</div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
