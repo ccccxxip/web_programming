@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Список задач</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="tasks">
+    <div class="tasks-header">
+      <h1>Список задач</h1>
+      <button id="createBtn" class="btn-add">Добавить</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <div class="task-card" id="taskCard">
+    <h2>Карточка задачи</h2>
+
+    <label class="field">
+      <span class="field-label">Задача</span>
+      <input type="text" id="taskTitle">
+    </label>
+
+    <label class="field">
+      <span class="field-label">Описание задачи</span>
+      <textarea id="taskDesc"></textarea>
+    </label>
+
+    <label class="priority">
+        <input type="checkbox" id="taskHigh">
+        <span>Высокий приоритет</span>
+        <span class="icon-priority">‼️</span>
+      </label>
+      
+
+    <div class="card-buttons">
+      <button id="saveBtn" class="btn-primary">Сохранить</button>
+      <button id="cancelBtn" class="btn-secondary">Отменить</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
