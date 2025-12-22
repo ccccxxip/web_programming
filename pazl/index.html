@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пазл</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎀 Пазл</h1>
+        
+        <div class="controls">
+            <div class="controls-left">
+                <button id="start-btn">Начать игру</button>
+                <button id="reset-btn">Сбросить</button>
+            </div>
+            <div class="info">
+                <span>⏰ Время: <span id="time">00:00</span></span>
+                <span>🔄 Ходы: <span id="moves">0</span></span>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <div class="pieces-panel">
+                <h3>🧩 Кусочки пазла</h3>
+                <div id="pieces-container" class="pieces-container">
+                </div>
+            </div>
+            
+            <div class="puzzle-panel">
+                <h3>🎮 Игровое поле (9×6)</h3>
+                <div id="puzzle-container" class="puzzle-container">
+                </div>
+                <div class="preview">
+                    <p>📷 Исходное изображение:</p>
+                    <img id="preview-img" src="picture/pic.jpg" alt="Превью" width="225" height="150">
+                </div>
+            </div>
+        </div>
+        
+        <div class="status">
+            <div id="message">Нажмите "Начать игру"</div>
+            <div class="progress">
+                📊 Прогресс: <span id="progress">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

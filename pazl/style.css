@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffe6f2, #ffccdd);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    border: 3px solid #ff99cc;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ff66a3;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 0 #ffcce6;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: linear-gradient(to right, #ffe6f2, #ffccdd);
+    border-radius: 10px;
+    border: 2px solid #ff99cc;
+}
+
+.controls-left {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff66a3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 #e60073;
+}
+
+button:hover {
+    background-color: #ff3385;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #e60073;
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #e60073;
+}
+
+#reset-btn {
+    background-color: #ff99cc;
+    box-shadow: 0 4px 0 #ff66a3;
+}
+
+#reset-btn:hover {
+    background-color: #ff80bf;
+    box-shadow: 0 6px 0 #ff66a3;
+}
+
+.info {
+    display: flex;
+    gap: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff3385;
+}
+
+.game-area {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.pieces-panel, .puzzle-panel {
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff5fa, #ffe6f2);
+    border-radius: 10px;
+    border: 2px solid #ffb3d9;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: #ff66a3;
+    font-size: 1.3em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffccdd;
+}
+
+.pieces-container {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-auto-rows: 50px;
+    gap: 8px;
+    padding: 15px;
+    background-color: #ffe6f2;
+    border-radius: 8px;
+    min-height: 350px;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 2px dashed #ff99cc;
+}
+
+.puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(6, 50px);
+    gap: 3px;
+    background-color: #ffe6f2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 2px solid #ff99cc;
+}
+
+.piece {
+    width: 50px;
+    height: 50px;
+    background-size: 450px 300px;
+    cursor: grab;
+    border: 2px solid #ff99cc;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.piece:hover {
+    border-color: #ff3385;
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(255, 51, 133, 0.3);
+}
+
+.puzzle-cell {
+    width: 50px;
+    height: 50px;
+    border: 2px dashed #ff99cc;
+    border-radius: 5px;
+    background-color: #fff5fa;
+    transition: all 0.2s ease;
+}
+
+.puzzle-cell:hover {
+    background-color: #ffe6f2;
+}
+
+.puzzle-cell.filled {
+    border: 2px solid #ff66a3;
+    background-color: white;
+}
+
+.preview {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 2px solid #ffccdd;
+}
+
+.preview p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ff66a3;
+    font-size: 1.1em;
+}
+
+#preview-img {
+    border: 3px solid #ff66a3;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 102, 163, 0.3);
+}
+
+.status {
+    padding: 15px;
+    background: linear-gradient(to right, #ffe6f2, #ffccdd);
+    border-radius: 10px;
+    font-size: 16px;
+    border: 2px solid #ff99cc;
+}
+
+#message {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ff3385;
+    font-size: 1.1em;
+}
+
+.progress {
+    color: #ff66a3;
+    font-weight: bold;
+}
+
+#progress {
+    font-size: 1.2em;
+    color: #ff0066;
+}
+
+.pieces-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.pieces-container::-webkit-scrollbar-track {
+    background: #ffe6f2;
+    border-radius: 5px;
+}
+
+.pieces-container::-webkit-scrollbar-thumb {
+    background: #ff99cc;
+    border-radius: 5px;
+}
+
+.pieces-container::-webkit-scrollbar-thumb:hover {
+    background: #ff66a3;
+}
