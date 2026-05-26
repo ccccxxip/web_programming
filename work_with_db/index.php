@@ -145,7 +145,7 @@ button:hover{
 <label>Тематика</label>
 <select name="subject_id">
 
-<option value="">-- Выберите тему --</option>
+<option value="">Выберите тему</option>
 
 <?php foreach (Application::$subjects as $id => $subject): ?>
 
@@ -164,7 +164,7 @@ button:hover{
 
 <select name="payment_id">
 
-<option value="">-- Выберите оплату --</option>
+<option value="">Выберите оплату</option>
 
 <?php foreach (Application::$payments as $id => $payment): ?>
 
