@@ -1,3 +1,9 @@
+-- создание базы данных
+CREATE DATABASE IF NOT EXISTS cosmetics;
+
+-- выбор базы данных
+USE cosmetics;
+
 -- таблицы
 
 -- категории товаров
